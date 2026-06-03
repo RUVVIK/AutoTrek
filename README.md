@@ -82,7 +82,6 @@ AutoTrek/
 
 ## 🚀 Установка и запуск
 
-1. Клонируйте репозиторий:
+1. Репозиторий доступен по ссылке:
    ```bash
    https://github.com/RUVVIK/AutoTrek.git
-git clone
