@@ -1,0 +1,79 @@
+﻿<Page x:Class="AutoTrek.Page09_PartsRequest"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgLight}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="{StaticResource BgDark}" Grid.Row="0">
+            <DockPanel>
+                <TextBlock Text="Заявка на приобретение запчастей" Style="{StaticResource WhiteText}" Margin="20,0" VerticalAlignment="Center"/>
+                <Button Content="Выход" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnExit_Click" Margin="0,0,20,0"/>
+                <Button Content="Закрыть" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnClose_Click" Margin="0,0,10,0"/>
+                <TextBlock Text="Механик" Style="{StaticResource WhiteText}" Margin="0,0,20,0" VerticalAlignment="Center"/>
+            </DockPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="800" Padding="20">
+            <Border Style="{StaticResource Panel}">
+                <StackPanel>
+                    <Border Style="{StaticResource HeaderBar}">
+                        <TextBlock Text="Использованные запчасти" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+
+                    <!-- ИСПРАВЛЕНО: Добавлена привязка данных -->
+                    <DataGrid Height="150" ItemsSource="{Binding Parts}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="№" Width="40" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Наименование" Width="250" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Кол-во" Width="60" Binding="{Binding Qty}"/>
+                            <DataGridTextColumn Header="Ед." Width="50" Binding="{Binding Unit}"/>
+                            <DataGridTextColumn Header="Цена" Width="80" Binding="{Binding Price}"/>
+                            <DataGridTextColumn Header="Сумма" Width="80" Binding="{Binding Total}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <TextBlock Text="Итого запчасти: 5 950 руб." HorizontalAlignment="Right" FontWeight="SemiBold" Margin="0,10" FontSize="16"/>
+
+                    <UniformGrid Columns="2" Margin="0,5">
+                        <Button Content="Добавить запчасть" Click="BtnAddPart_Click" Height="40"/>
+                        <Button Content="Удалить" Height="40" Margin="10,0,0,0"/>
+                    </UniformGrid>
+
+                    <Border Style="{StaticResource HeaderBar}" Margin="0,15">
+                        <TextBlock Text="Трудозатраты" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Нормо-часы:"/>
+                        <TextBox Grid.Column="1"/>
+                        <Label Grid.Row="1" Content="Стоимость нормо-часа:"/>
+                        <TextBox Grid.Row="1" Grid.Column="1"/>
+                        <Label Grid.Row="2" Content="Стоимость работ:"/>
+                        <TextBox Grid.Row="2" Grid.Column="1"/>
+                        <Label Grid.Row="3" Content="Итоговая стоимость:"/>
+                        <TextBox Grid.Row="3" Grid.Column="1"/>
+                    </Grid>
+
+                    <UniformGrid Columns="3" Margin="0,20">
+                        <Button Content="Сохранить" Height="40"/>
+                        <Button Content="Отмена" Height="40"/>
+                        <Button Content="Сохранить и печать" Height="40"/>
+                    </UniformGrid>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</Page>

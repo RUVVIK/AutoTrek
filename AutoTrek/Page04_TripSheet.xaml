@@ -1,0 +1,72 @@
+﻿<Page x:Class="AutoTrek.Page04_TripSheet"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgLight}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="{StaticResource BgDark}" Grid.Row="0">
+            <DockPanel>
+                <TextBlock Text="Ввод данных путевого листа" Style="{StaticResource WhiteText}" Margin="20,0" VerticalAlignment="Center"/>
+                <Button Content="Выход" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnExit_Click" Margin="0,0,20,0"/>
+                <Button Content="Закрыть" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnClose_Click" Margin="0,0,10,0"/>
+                <TextBlock Text="Диспетчер" Style="{StaticResource WhiteText}" Margin="0,0,20,0" VerticalAlignment="Center"/>
+            </DockPanel>
+        </Border>
+        <ScrollViewer Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="700" Padding="20">
+            <Border Style="{StaticResource Panel}">
+                <StackPanel>
+                    <Border Style="{StaticResource HeaderBar}">
+                        <TextBlock Text="Регистрация путевого листа" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource HeaderBar}" Margin="0,0,0,15">
+                        <TextBlock Text="Основные данные" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Номер путевого листа:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1"/>
+                        <Label Grid.Row="1" Content="Транспортное средство:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="1" Grid.Column="1"/>
+                        <Label Grid.Row="2" Content="Водитель:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="2" Grid.Column="1"/>
+                        <Label Grid.Row="3" Content="Дата рейса:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="3" Grid.Column="1"/>
+                    </Grid>
+                    <Border Style="{StaticResource HeaderBar}" Margin="0,15">
+                        <TextBlock Text="Дополнительно" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Маршрут:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1"/>
+                        <Label Grid.Row="1" Content="Примечание:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Height="60" TextWrapping="Wrap"/>
+                    </Grid>
+                    <UniformGrid Columns="2" Margin="0,15,0,0">
+                        <Button Content="Сохранить" Height="40"/>
+                        <Button Content="Отмена" Height="40" Margin="10,0,0,0"/>
+                    </UniformGrid>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</Page>

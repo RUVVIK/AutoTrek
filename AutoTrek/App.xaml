@@ -1,0 +1,93 @@
+﻿<Application x:Class="AutoTrek.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- Цвета -->
+        <SolidColorBrush x:Key="BgDark" Color="#1E5B9B"/>
+        <SolidColorBrush x:Key="BgLight" Color="#3A8CD6"/>
+        <SolidColorBrush x:Key="PanelBg" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="HeaderBg" Color="#2C527A"/>
+        <SolidColorBrush x:Key="TextWhite" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="BtnBg" Color="#E8F0FE"/>
+
+        <!-- Стили -->
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="{StaticResource BgLight}"/>
+            <Setter Property="Width" Value="1280"/>
+            <Setter Property="Height" Value="720"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+            <!-- WindowStartupLocation зададим в MainWindow.xaml -->
+        </Style>
+
+        <Style x:Key="Panel" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PanelBg}"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource BtnBg}"/>
+            <Setter Property="Foreground" Value="#111"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BigBtn" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style x:Key="HeaderBar" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource HeaderBg}"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style x:Key="WhiteText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextWhite}"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#F5F7FA"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#D1D5DB"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Setter Property="Margin" Value="0,4,0,8"/>
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="Background" Value="#F5F7FA"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#D1D5DB"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Setter Property="Margin" Value="0,4,0,8"/>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="RowBackground" Value="#F8F9FA"/>
+            <Setter Property="AlternatingRowBackground" Value="#FFFFFF"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#E0E0E0"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+        </Style>
+    </Application.Resources>
+</Application>

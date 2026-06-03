@@ -1,0 +1,57 @@
+﻿<Page x:Class="AutoTrek.Page06_Maintenance"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgLight}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Background="{StaticResource BgDark}" Grid.Row="0">
+            <DockPanel>
+                <TextBlock Text="Календарь технического обслуживания" Style="{StaticResource WhiteText}" Margin="20,0" VerticalAlignment="Center"/>
+                <Button Content="Выход" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnExit_Click" Margin="0,0,20,0"/>
+                <Button Content="Закрыть" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnClose_Click" Margin="0,0,10,0"/>
+                <TextBlock Text="Диспетчер" Style="{StaticResource WhiteText}" Margin="0,0,20,0" VerticalAlignment="Center"/>
+            </DockPanel>
+        </Border>
+        <ScrollViewer Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="750" Padding="20">
+            <Border Style="{StaticResource Panel}">
+                <StackPanel>
+                    <Border Style="{StaticResource HeaderBar}">
+                        <TextBlock Text="Плановое техническое обслуживание" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource HeaderBar}" Margin="0,0,0,15">
+                        <TextBlock Text="Запланированные ТО на 18.02.2026" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+                    <TextBlock Text="⚠ А123ВС77 • ПАЗ Vector Next" FontWeight="SemiBold" FontSize="14"/>
+                    <TextBlock Text="ТО-1 (Замена масла и фильтров)"/>
+                    <TextBlock Text="Текущий пробег: 125 650 км    Плановый: 130 000 км"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,15">
+                        <Button Content="[Подробнее]" Padding="8,4"/>
+                        <Button Content="[Отметить выполненным]" Padding="8,4" Margin="10,0,0,0"/>
+                    </StackPanel>
+                    <TextBlock Text="В234СТ77 • ГАЗель NEXT А65R33" FontWeight="SemiBold" FontSize="14"/>
+                    <TextBlock Text="Замена масла в двигателе"/>
+                    <TextBlock Text="Текущий пробег: 87 450 км    Плановый: 90 000 км"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,15">
+                        <Button Content="[Подробнее]" Padding="8,4"/>
+                        <Button Content="[Отметить выполненным]" Padding="8,4" Margin="10,0,0,0"/>
+                    </StackPanel>
+                    <Border Style="{StaticResource HeaderBar}" Margin="0,15,0,15">
+                        <TextBlock Text="Просроченные ТО" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+                    <TextBlock Text=" М567НВ77 • ГАЗель NEXT А65R33" FontWeight="SemiBold" FontSize="14"/>
+                    <TextBlock Text="ТО-2 (Полное ТО) - просрочена 15 дней"/>
+                    <TextBlock Text="Перепробег: 1 200 км"/>
+                    <Button Content="[Срочно оформить]" Margin="0,10,0,15" Padding="10,5"/>
+                    <UniformGrid Columns="3" Margin="0,10">
+                        <Button Content="Экспорт в Excel" Height="35"/>
+                        <Button Content="Печать" Height="35"/>
+                        <Button Content="Напомнить завтра" Height="35"/>
+                    </UniformGrid>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</Page>

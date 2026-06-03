@@ -1,0 +1,177 @@
+﻿<Page x:Class="AutoTrek.Page14_CostReport"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgLight}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="{StaticResource BgDark}" Grid.Row="0">
+            <DockPanel>
+                <TextBlock Text="Отчёт по затратам автопарка" Style="{StaticResource WhiteText}" Margin="20,0" VerticalAlignment="Center"/>
+                <Button Content="Выход" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnExit_Click" Margin="0,0,20,0"/>
+                <Button Content="Закрыть" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnClose_Click" Margin="0,0,10,0"/>
+                <TextBlock Text="Бухгалтер" Style="{StaticResource WhiteText}" Margin="0,0,20,0" VerticalAlignment="Center"/>
+            </DockPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="880" Padding="20">
+            <Border Style="{StaticResource Panel}">
+                <StackPanel>
+                    <!-- Заголовок -->
+                    <Border Style="{StaticResource HeaderBar}">
+                        <TextBlock Text="Отчёт о затратах на содержание автопарка&#10;за Январь - Февраль 2026" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+
+                    <!-- Параметры отчета -->
+                    <Border Background="#E8F0FE" Padding="15" CornerRadius="8" Margin="0,10,0,0">
+                        <StackPanel>
+                            <TextBlock Text="Параметры отчета" FontWeight="Bold" Foreground="#2C527A" Margin="0,0,0,10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Text="Период с:" FontSize="12" Margin="0,0,0,4"/>
+                                    <TextBox Text="01.01.2026" Height="30"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="по:" FontSize="12" Margin="0,0,0,4"/>
+                                    <TextBox Text="28.02.2026" Height="30"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2" Margin="20,0,0,0">
+                                    <TextBlock Text="Группировка:" FontSize="12" Margin="0,0,0,5"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton Content="По типам затрат" IsChecked="True" GroupName="Grp1" Margin="0,0,10,0"/>
+                                        <RadioButton Content="По ТС" GroupName="Grp1" Margin="0,0,10,0"/>
+                                        <RadioButton Content="По месяцам" GroupName="Grp1" Margin="0,0,10,0"/>
+                                        <RadioButton Content="По статьям" GroupName="Grp1"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Сводная таблица -->
+                    <Border Style="{StaticResource HeaderBar}" Margin="0,15,0,0">
+                        <TextBlock Text="Сводная таблица затрат" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+
+                    <!-- ИСПРАВЛЕНО: Добавлена ItemsSource="{Binding CostTable}" -->
+                    <DataGrid Height="146" ItemsSource="{Binding CostTable}" AutoGenerateColumns="False" IsReadOnly="True" 
+                              RowHeaderWidth="0" SelectionUnit="Cell" CanUserResizeColumns="False"
+                              BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#E0E0E0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Статья затрат" Width="160" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Сумма (руб)" Width="110" Binding="{Binding Sum}"/>
+                            <DataGridTextColumn Header="%" Width="60" Binding="{Binding Percent}"/>
+                            <DataGridTemplateColumn Header="График" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="200" HorizontalAlignment="Left">
+                                            <!-- Серый фон на всю ширину -->
+                                            <Rectangle Fill="#E0E0E0" Height="14" Width="180" HorizontalAlignment="Left"/>
+                                            <!-- Синяя полоска поверх серого -->
+                                            <Rectangle Fill="#2C527A" Height="14" Width="{Binding BarWidth}" HorizontalAlignment="Left"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <TextBlock Text="ИТОГО: 1 245 780 руб. | 100%" HorizontalAlignment="Right" FontWeight="Bold" Margin="0,10" FontSize="14"/>
+
+                    <!-- Динамика затрат -->
+                    <Border Style="{StaticResource HeaderBar}" Margin="0,15,0,0">
+                        <TextBlock Text="Динамика затрат по месяцам" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+
+                    <Border Background="#F8F9FA" Height="280" Margin="0,10" CornerRadius="8" ClipToBounds="True">
+                        <Grid>
+                            <Canvas>
+                                <!-- Ось Y -->
+                                <Line X1="50" Y1="30" X2="50" Y2="230" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Center" Height="191" Canvas.Top="39" VerticalAlignment="Top"/>
+
+                                <!-- Числа и деления Y (сдвинул числа ниже, чтобы были напротив делений) -->
+                                <TextBlock Text="700" Canvas.Left="17" Canvas.Top="86" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <Line X1="45" Y1="30" X2="50" Y2="30" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Center" Canvas.Top="62" VerticalAlignment="Top"/>
+
+                                <TextBlock Text="600" Canvas.Left="17" Canvas.Top="123" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <Line X1="45" Y1="70" X2="50" Y2="70" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Center" Canvas.Top="60" VerticalAlignment="Top"/>
+
+                                <TextBlock Text="500" Canvas.Left="17" Canvas.Top="158" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <Line X1="45" Y1="110" X2="50" Y2="110" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Center" Canvas.Top="55" VerticalAlignment="Top"/>
+
+                                <TextBlock Text="400" Canvas.Left="17" Canvas.Top="194" FontSize="10"/>
+                                <Line X1="45" Y1="150" X2="50" Y2="150" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Center" Canvas.Top="50" VerticalAlignment="Top"/>
+
+                                <TextBlock Text="Сумма, тыс. руб" Canvas.Left="6" Canvas.Top="47" FontSize="10"/>
+
+                                <!-- Ось X -->
+                                <Line X1="50" Y1="230" X2="450" Y2="230" Stroke="Black" StrokeThickness="1"/>
+                                <TextBlock Text="Янв" Canvas.Left="70" Canvas.Top="235" FontSize="10"/>
+                                <TextBlock Text="Фев" Canvas.Left="130" Canvas.Top="235" FontSize="10"/>
+                                <TextBlock Text="Мар" Canvas.Left="190" Canvas.Top="235" FontSize="10"/>
+                                <TextBlock Text="Апр" Canvas.Left="250" Canvas.Top="235" FontSize="10"/>
+                                <TextBlock Text="Май" Canvas.Left="310" Canvas.Top="235" FontSize="10"/>
+
+                                <!-- Точки Факта -->
+                                <Ellipse Fill="#1E5B9B" Width="8" Height="8" Canvas.Left="86" Canvas.Top="215"/>
+                                <Ellipse Fill="#1E5B9B" Width="8" Height="8" Canvas.Left="146" Canvas.Top="205"/>
+                                <Ellipse Fill="#1E5B9B" Width="8" Height="8" Canvas.Left="206" Canvas.Top="175"/>
+                                <Ellipse Fill="#1E5B9B" Width="8" Height="8" Canvas.Left="266" Canvas.Top="135"/>
+                                <Ellipse Fill="#1E5B9B" Width="8" Height="8" Canvas.Left="326" Canvas.Top="110"/>
+
+                                <!-- Линия Плана -->
+                                <Line X1="60" Y1="190" X2="350" Y2="190" Stroke="Gray" StrokeThickness="1" StrokeDashArray="4,4"/>
+                            </Canvas>
+
+                            <!-- Легенда -->
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="145,0,0,8">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                                    <Ellipse Fill="#1E5B9B" Width="8" Height="8" Margin="0,0,5,0"/>
+                                    <TextBlock Text="Факт" FontSize="11"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Line X1="0" Y1="4" X2="20" Y2="4" Stroke="Gray" StrokeThickness="1" StrokeDashArray="4,4" Margin="0,0,5,0" Height="6"/>
+                                    <TextBlock Text="План" FontSize="11"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- Детализация по ТС -->
+                    <Border Style="{StaticResource HeaderBar}" Margin="0,15,0,0">
+                        <TextBlock Text="Детализация по ТС" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+
+                    <Border Background="#F8F9FA" Padding="15" CornerRadius="8">
+                        <StackPanel>
+                            <TextBlock Text="Топ-5 затратных ТС:" FontWeight="Bold" Margin="0,0,0,10"/>
+                            <TextBlock Text="1. Е345КХ77 - ЛИАЗ 5292 - 245 600 руб. (19.7%)" Margin="0,2"/>
+                            <TextBlock Text="2. А123ВС77 - ПАЗ Vector Next - 187 300 руб. (15.0%)" Margin="0,2"/>
+                            <TextBlock Text="3. 0456МР77 - ПАЗ Vector Next - 165 400 руб. (13.3%)" Margin="0,2"/>
+                            <TextBlock Text="4. В234СТ77 - ГАЗель NEXT - 158 900 руб. (12.8%)" Margin="0,2"/>
+                            <TextBlock Text="5. М567НВ77 - ГАЗель NEXT - 156 800 руб. (12.6%)" Margin="0,2"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Button Content="Полный список ТС" Margin="0,15" Width="200"/>
+
+                    <!-- Кнопки экспорта -->
+                    <UniformGrid Columns="4" Margin="0,15">
+                        <Button Content="Экспорт в Excel" Height="40"/>
+                        <Button Content="Экспорт в PDF" Height="40"/>
+                        <Button Content="Печать" Height="40"/>
+                        <Button Content="Отправить" Height="40"/>
+                    </UniformGrid>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FFEFAEFF-95B2-43EA-AB9B-D0EB957589ED}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AutoTrek</RootNamespace>
+    <AssemblyName>AutoTrek</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Page01_Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page02_Roles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page03_Dispatcher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page04_TripSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page05_Fueling.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page06_Maintenance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page07_Mechanic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page08_RepairForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page09_PartsRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page10_PartsAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page11_ServiceHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page12_ServiceGraph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page13_Accountant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page14_CostReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page15_PriceEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page16_Analytics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page17_AnalyticsDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page18_Manager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page19_PlanFact.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Page01_Login.xaml.cs">
+      <DependentUpon>Page01_Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page02_Roles.xaml.cs">
+      <DependentUpon>Page02_Roles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page03_Dispatcher.xaml.cs">
+      <DependentUpon>Page03_Dispatcher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page04_TripSheet.xaml.cs">
+      <DependentUpon>Page04_TripSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page05_Fueling.xaml.cs">
+      <DependentUpon>Page05_Fueling.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page06_Maintenance.xaml.cs">
+      <DependentUpon>Page06_Maintenance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page07_Mechanic.xaml.cs">
+      <DependentUpon>Page07_Mechanic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page08_RepairForm.xaml.cs">
+      <DependentUpon>Page08_RepairForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page09_PartsRequest.xaml.cs">
+      <DependentUpon>Page09_PartsRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page10_PartsAdd.xaml.cs">
+      <DependentUpon>Page10_PartsAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page11_ServiceHistory.xaml.cs">
+      <DependentUpon>Page11_ServiceHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page12_ServiceGraph.xaml.cs">
+      <DependentUpon>Page12_ServiceGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page13_Accountant.xaml.cs">
+      <DependentUpon>Page13_Accountant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page14_CostReport.xaml.cs">
+      <DependentUpon>Page14_CostReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page15_PriceEdit.xaml.cs">
+      <DependentUpon>Page15_PriceEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page16_Analytics.xaml.cs">
+      <DependentUpon>Page16_Analytics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page17_AnalyticsDetails.xaml.cs">
+      <DependentUpon>Page17_AnalyticsDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page18_Manager.xaml.cs">
+      <DependentUpon>Page18_Manager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page19_PlanFact.xaml.cs">
+      <DependentUpon>Page19_PlanFact.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

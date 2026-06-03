@@ -1,0 +1,136 @@
+﻿<Page x:Class="AutoTrek.Page17_AnalyticsDetails"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgLight}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель -->
+        <Border Background="{StaticResource BgDark}" Grid.Row="0">
+            <DockPanel>
+                <TextBlock Text="Аналитика по ТС" Style="{StaticResource WhiteText}" Margin="20,0" VerticalAlignment="Center"/>
+                <Button Content="Выход" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnExit_Click" Margin="0,0,20,0"/>
+                <Button Content="Закрыть" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnClose_Click" Margin="0,0,10,0"/>
+                <TextBlock Text="Бухгалтер" Style="{StaticResource WhiteText}" Margin="0,0,20,0" VerticalAlignment="Center"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Контент -->
+        <ScrollViewer Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="900" Padding="20">
+            <Border Style="{StaticResource Panel}">
+                <StackPanel>
+                    <!-- Структура затрат по статьям -->
+                    <Border Style="{StaticResource HeaderBar}">
+                        <TextBlock Text="Структура затрат по статьям" Style="{StaticResource WhiteText}" TextAlignment="Center" FontSize="16"/>
+                    </Border>
+
+                    <Grid Margin="0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Пирамида затрат -->
+                        <Border Background="#F8F9FA" Padding="20" CornerRadius="8" Margin="0,0,10,0" Height="206" VerticalAlignment="Center">
+                            <Grid>
+                                <Canvas Height="260" Width="300" Margin="23,-90,24,16">
+                                    <!-- ===== ГСМ 55% (низ, 8 кирпичей) ===== -->
+                                    <!-- Кирпичики слева направо -->
+                                    <Rectangle Fill="#1E3A5F" Canvas.Left="62"  Canvas.Top="220" Width="20" Height="18"/>
+                                    <Rectangle Fill="#1E3A5F" Canvas.Left="84"  Canvas.Top="220" Width="20" Height="18"/>
+                                    <Rectangle Fill="#1E3A5F" Canvas.Left="106" Canvas.Top="220" Width="20" Height="18"/>
+                                    <Rectangle Fill="#1E3A5F" Canvas.Left="128" Canvas.Top="220" Width="20" Height="18"/>
+                                    <Rectangle Fill="#1E3A5F" Canvas.Left="150" Canvas.Top="220" Width="20" Height="18"/>
+                                    <Rectangle Fill="#1E3A5F" Canvas.Left="172" Canvas.Top="220" Width="20" Height="18"/>
+                                    <Rectangle Fill="#1E3A5F" Canvas.Left="194" Canvas.Top="220" Width="20" Height="18"/>
+                                    <Rectangle Fill="#1E3A5F" Canvas.Left="216" Canvas.Top="220" Width="20" Height="18"/>
+                                    <!-- Надпись в центре -->
+                                    <TextBlock Text="ГСМ 55%" Canvas.Left="123" Canvas.Top="242" FontSize="12" FontWeight="Bold" Foreground="#1E3A5F" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                                    <!-- ===== Ремонт 32% (середина, 5 кирпичей) ===== -->
+                                    <Rectangle Fill="#2C5A8A" Canvas.Left="95"  Canvas.Top="175" Width="20" Height="18"/>
+                                    <Rectangle Fill="#2C5A8A" Canvas.Left="117" Canvas.Top="175" Width="20" Height="18"/>
+                                    <Rectangle Fill="#2C5A8A" Canvas.Left="139" Canvas.Top="175" Width="20" Height="18"/>
+                                    <Rectangle Fill="#2C5A8A" Canvas.Left="161" Canvas.Top="175" Width="20" Height="18"/>
+                                    <Rectangle Fill="#2C5A8A" Canvas.Left="183" Canvas.Top="175" Width="20" Height="18"/>
+                                    <!-- Надпись в центре -->
+                                    <TextBlock Text="Ремонт" Canvas.Left="112" Canvas.Top="197" FontSize="11" FontWeight="Bold" Foreground="#2C5A8A" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                    <TextBlock Text="32%" Canvas.Left="155" Canvas.Top="198" FontSize="11" FontWeight="Bold" Foreground="#2C5A8A" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+                                    <!-- ===== Прочее 13% (верх, 2 кирпича) ===== -->
+                                    <Rectangle Fill="#3A7AB5" Canvas.Left="128" Canvas.Top="130" Width="20" Height="18"/>
+                                    <Rectangle Fill="#3A7AB5" Canvas.Left="150" Canvas.Top="130" Width="20" Height="18"/>
+                                    <!-- Надпись в центре -->
+                                    <TextBlock Text="Прочее" Canvas.Left="116" Canvas.Top="152" FontSize="11" FontWeight="Bold" Foreground="#3A7AB5" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                    <TextBlock Text="13%" Canvas.Left="158" Canvas.Top="152" FontSize="11" FontWeight="Bold" Foreground="#3A7AB5"/>
+                                </Canvas>
+                            </Grid>
+                        </Border>
+
+                        <!-- Таблица структуры -->
+                        <Border Grid.Column="1" Background="#F8F9FA" Padding="15" CornerRadius="8" Margin="10,0,0,0">
+                            <DataGrid ItemsSource="{Binding StructureTable}" AutoGenerateColumns="False" IsReadOnly="True"
+                                      BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#E0E0E0" Margin="0,10,0,-5">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Статья затрат" Width="120" Binding="{Binding Name}"/>
+                                    <DataGridTextColumn Header="Сумма (руб)" Width="100" Binding="{Binding Sum}"/>
+                                    <DataGridTextColumn Header="%" Width="60" Binding="{Binding Percent}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Border>
+                    </Grid>
+
+                    <!-- Детальная таблица расходов -->
+                    <Border Style="{StaticResource HeaderBar}" Margin="0,15,0,0">
+                        <TextBlock Text="Детальная таблица расходов" Style="{StaticResource WhiteText}" TextAlignment="Center" FontSize="16"/>
+                    </Border>
+
+                    <DataGrid Height="149" ItemsSource="{Binding DetailedTable}" AutoGenerateColumns="False" IsReadOnly="True"
+                              BorderThickness="0" GridLinesVisibility="All" HorizontalGridLinesBrush="#D1D5DB" VerticalGridLinesBrush="#D1D5DB"
+                              Margin="0,10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Дата" Width="90" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Header="Статья" Width="80" Binding="{Binding Article}"/>
+                            <DataGridTextColumn Header="Описание" Width="180" Binding="{Binding Description}"/>
+                            <DataGridTextColumn Header="Кол-во" Width="70" Binding="{Binding Quantity}"/>
+                            <DataGridTextColumn Header="Цена" Width="80" Binding="{Binding Price}"/>
+                            <DataGridTextColumn Header="Сумма" Width="90" Binding="{Binding Sum}"/>
+                            <DataGridTextColumn Header="Примеч." Width="100" Binding="{Binding Note}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <TextBlock Text="Итого за период: 294 500 руб" HorizontalAlignment="Right" FontWeight="Bold" Margin="0,5" FontSize="14"/>
+
+                    <!-- Сравнение со средними показателями -->
+                    <Border Style="{StaticResource HeaderBar}" Margin="0,15,0,0">
+                        <TextBlock Text="Сравнение со средними показателями по парку" Style="{StaticResource WhiteText}" TextAlignment="Center" FontSize="16"/>
+                    </Border>
+
+                    <DataGrid Height="120" ItemsSource="{Binding ComparisonTable}" AutoGenerateColumns="False" IsReadOnly="True"
+                              BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#E0E0E0"
+                              Margin="0,10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Показатель" Width="150" Binding="{Binding Indicator}"/>
+                            <DataGridTextColumn Header="Данное ТС" Width="100" Binding="{Binding ThisVehicle}"/>
+                            <DataGridTextColumn Header="Среднее по парку" Width="120" Binding="{Binding FleetAverage}"/>
+                            <DataGridTextColumn Header="Отклонение" Width="100" Binding="{Binding Deviation}"/>
+                            <DataGridTemplateColumn Header="Оценка" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Ellipse Fill="{Binding IndicatorColor}" Width="12" Height="12" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{Binding IndicatorText}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</Page>

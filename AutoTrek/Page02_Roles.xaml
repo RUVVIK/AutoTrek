@@ -1,0 +1,16 @@
+﻿<Page x:Class="AutoTrek.Page02_Roles"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgDark}">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Выберите роль" Style="{StaticResource WhiteText}" FontSize="28" TextAlignment="Center" Margin="0,0,0,40" FontWeight="Bold"/>
+            <UniformGrid Columns="2" Rows="2" Width="600" Height="260">
+                <Button Style="{StaticResource BigBtn}" Content="Диспетчер" Click="Role_Click" Tag="Page03_Dispatcher"/>
+                <Button Style="{StaticResource BigBtn}" Content="Руководитель&#10;автопарка" Click="Role_Click" Tag="Page18_Manager"/>
+                <Button Style="{StaticResource BigBtn}" Content="Механик" Click="Role_Click" Tag="Page07_Mechanic"/>
+                <Button Style="{StaticResource BigBtn}" Content="Бухгалтер" Click="Role_Click" Tag="Page13_Accountant"/>
+            </UniformGrid>
+        </StackPanel>
+    </Grid>
+</Page>

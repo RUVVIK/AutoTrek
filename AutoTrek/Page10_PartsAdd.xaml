@@ -1,0 +1,107 @@
+﻿<Page x:Class="AutoTrek.Page10_PartsAdd"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgLight}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель -->
+        <Border Background="{StaticResource BgDark}" Grid.Row="0">
+            <DockPanel>
+                <TextBlock Text="Заявка на приобретение запчастей" Style="{StaticResource WhiteText}" Margin="20,0" VerticalAlignment="Center"/>
+                <Button Content="Выход" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnExit_Click" Margin="0,0,20,0"/>
+                <Button Content="Закрыть" DockPanel.Dock="Right" Background="Transparent" Foreground="White" Click="BtnClose_Click" Margin="0,0,10,0"/>
+                <TextBlock Text="Механик" Style="{StaticResource WhiteText}" Margin="0,0,20,0" VerticalAlignment="Center"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Основной контент -->
+        <ScrollViewer Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="850" Padding="20">
+            <Border Style="{StaticResource Panel}">
+                <StackPanel>
+                    <!-- Заголовок -->
+                    <Border Style="{StaticResource HeaderBar}">
+                        <TextBlock Text="Заявка на запчасти № ЗЧ-2026-45" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+
+                    <!-- Поля ввода с данными -->
+                    <Grid Margin="0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Дата создания:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" Text=""/>
+
+                        <Label Grid.Row="1" Content="Статус:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text=""/>
+
+                        <Label Grid.Row="2" Content="Создал:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text=""/>
+
+                        <Label Grid.Row="3" Content="Для ТС:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text=""/>
+
+                        <Label Grid.Row="4" Content="Основание:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text=""/>
+                    </Grid>
+
+                    <!-- Таблица -->
+                    <Border Style="{StaticResource HeaderBar}" Margin="0,15">
+                        <TextBlock Text="Список запчастей" Style="{StaticResource WhiteText}" TextAlignment="Center"/>
+                    </Border>
+
+                    <DataGrid Height="180" ItemsSource="{Binding PartsList}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="№" Width="40" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Артикул" Width="80" Binding="{Binding Article}"/>
+                            <DataGridTextColumn Header="Наименование" Width="200" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Кол-во" Width="60" Binding="{Binding Qty}"/>
+                            <DataGridTextColumn Header="Ед." Width="50" Binding="{Binding Unit}"/>
+                            <DataGridTextColumn Header="Цена" Width="70" Binding="{Binding Price}"/>
+                            <DataGridTextColumn Header="Сумма" Width="80" Binding="{Binding Sum}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!-- Нижние кнопки -->
+                    <Grid Margin="0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Левая сторона -->
+                        <StackPanel Orientation="Vertical">
+                            <Button Content="Удалить выбранное" Width="180" HorizontalAlignment="Left"/>
+                            <Button Content="Импорт из каталога" Width="180" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        </StackPanel>
+
+                        <!-- Центр - Итого -->
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Итого: " FontWeight="Bold" FontSize="14" VerticalAlignment="Center"/>
+                            <TextBlock Text="12 200 руб." FontWeight="Bold" FontSize="16" Foreground="#2C527A" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <!-- Правая сторона -->
+                        <Button Content="Добавить позицию" Grid.Column="2" Width="200" HorizontalAlignment="Right"/>
+                    </Grid>
+
+                    <!-- Кнопка сохранения -->
+                    <Button Content="Сохранить" Height="45" Margin="0,10,0,0" Background="{StaticResource HeaderBg}" Foreground="White" FontSize="15"/>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</Page>
